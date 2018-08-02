@@ -1,0 +1,100 @@
+<% include ../partials/header %> 
+<a class="btn btn-primary btn-lg pull-right" href="/transition/new" role="button">Create new transition</a>
+
+<h1>Lists</h1>
+<h3>You are <%= numberOfTransitions %> transition</h3>
+<div id="map"></div>
+<br />
+<table class="table table-sm" id="track">
+    <thead>
+        <th></th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th></th>
+        <th></th>
+    </thead>
+    <tbody>
+
+        <% transitions.forEach(function(transition){ %>
+            <%if (transition.track) {%>
+                <tr>
+                    <%if (transition.positive) {%>
+                        <td><i class="fas fa-arrow-down"></i></td>
+                    <% }else{ %>
+                        <td><i class="fas fa-arrow-up"></i></td>
+                    <% } %>
+                    <td><%= transition.date %></td>
+                    <td><%= transition.description %></td>
+                    <td><%= transition.category %></td>
+                    <td><%= transition.amount %></td>
+                    <td>
+                        <form action="/transition/edit/<%= transition._id %>" method="GET">
+                            <button class="btn"><i class="fas fa-edit"></i></button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/transition/delete/<%= transition._id %>?_method=DELETE" method="POST">
+                            <button class="btn"><i class="fas fa-trash-alt"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            <% } %>
+        <% }); %>
+        <br />
+        <br />
+    </tbody>
+</table>
+<button type="button" class="btn btn-dark toggle-track">Show Untracked transitions</button>
+<table class="table table-sm" id="untracked">
+    <thead>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th></th>
+        <th></th>
+    </thead>
+    <% transitions.forEach(function(transition){ %>
+        <%if (transition.track == false) {%>
+            <tr>
+                <%if (transition.positive) {%>
+                    <td><i class="fas fa-arrow-down"></i></td>
+                <% }else{ %>
+                    <td><i class="fas fa-arrow-up"></i></td>
+                <% } %>
+                <td><%= transition.date %></td>
+                <td><%= transition.description %></td>
+                <td><%= transition.category %></td>
+                <td><%= transition.amount %></td>
+                <td>
+                    <form action="/transition/edit/<%= transition._id %>" method="GET">
+                        <button class="btn"><i class="fas fa-edit"></i></button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/transition/delete/<%= transition._id %>?_method=DELETE" method="POST">
+                        <button class="btn"><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                </td>
+            </tr>
+        <% } %>
+    <% }); %>
+</table>
+
+
+<div id="dateForGoogleMaps">
+    <% markers.forEach(function(marker, index){ %>
+            <span class="<%= index %>">
+                <div class="amount"><%= marker.amount %></div>
+                <div class="position"><%= marker.position %></div>
+                <div class="latitude"><%= marker.latitude %></div>
+                <div class="longitude"><%= marker.longitude %></div>
+            </span>
+    <% }); %>
+</div>
+
+<script src="/javascript/global.js"></script>
+
+<% include ../partials/footer %>

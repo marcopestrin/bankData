@@ -1,0 +1,67 @@
+<% include ../partials/header %> 
+<form action="/transition/addTransition" method="post">
+    <h1>Create new transition</h1>
+    <div class="row form-transition">
+        <div class="col-md-6 form-transition-field" data-provide="datepicker">
+            <label for="description">Date</label>
+            <input autocomplete="off" type="text" class="form-control" id="datepicker" name="date" />
+        </div>
+
+        <script>
+            jQuery('#datepicker').datepicker();
+        </script>
+
+        <div class="col-md-6 form-transition-field">
+            <label for="category">Category</label>
+            <select class="form-control" name="category" id="category" >
+                <option value="entertainment">Entertainment</option>
+                <option value="bills">Bills</option>
+                <option value="clothes">Clothes</option>
+                <option value="presents">Presents</option>
+                <option value="rent">Rent</option>
+                <option value="whim">Whim</option>
+                <option value="shopping">Shopping</option>
+                <option value="food">Food</option>
+            </select>
+        </div>
+
+        <div class="col-md-6 form-transition-field">
+            <label for="location">Location</label>
+            <input autocomplete="off" class="form-control" type="text" name="location" id="location" placeholder="Write here the city" />
+        </div>
+
+        <div class="col-md-6 form-transition-field">
+            <label for="amount">Amount</label>
+            <input autocomplete="off" class="form-control" type="number" name="amount" id="amount" />
+        </div>
+
+        <div class="col-md-12 form-transition-field">
+            <label for="description">Description</label>
+            <input autocomplete="off" class="form-control" type="text" name="description" id="description" />
+        </div>
+        <div class="col-md-6 form-transition-field">
+            <div class="col-md-6 form-transition-field">
+                <label for="positive-l">Positive</label><br />
+    
+                <label for="positive-si">YES</label>
+                <input class="form-control form-transition-radio-field" type="radio" name="positive" id="positive-si" value="1"/>
+    
+                <label for="positive-no">NO</label>
+                <input class="form-control form-transition-radio-field" type="radio" name="positive" id="positive-no" value="0"/>
+            </div>
+            <div class="col-md-6 form-transition-field">
+                <label for="track-l">Track</label><br />
+    
+                <label for="track-si">YES</label>
+                <input class="form-control form-transition-radio-field" type="radio" name="track" id="track-si" value="1"/>
+                
+                <label for="track-no">NO</label>
+                <input class="form-control form-transition-radio-field" type="radio" name="track" id="track-no" value="0"/>
+            </div>
+        </div>
+        <div class="col-md-6 form-transition-field">
+            <input class="form-control btn-success" type="submit" name="invia" id="invia" />
+        </div>
+    </div>
+</form>
+<% include ../partials/footer %> 

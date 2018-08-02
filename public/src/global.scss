@@ -1,0 +1,50 @@
+.form-transition {
+    .form-transition-field {
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+    .form-transition-radio-field {
+        display: inline;
+        width:auto;
+        height:12px;
+    }
+}
+
+#dateForGoogleMaps {
+    display:none;
+}
+#map {
+    height:400px;
+}
+#untracked {
+    display:none;
+}
+#dashboard-homepage {
+    span{
+        display: inline;
+        font-size:25px;
+        &.number {
+            font-size:40px;
+            font-weight:bold;
+            margin:10px 10px;  
+        }
+    }
+}
+table {
+    .fa-arrow-up {
+        color:red;
+    }
+    .fa-arrow-down{
+        color:green;
+    }
+}
+body {
+    background:white;
+}
+
+
+
+
+
+
+

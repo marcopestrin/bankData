@@ -1,0 +1,12 @@
+<% include partials/header %> 
+<div id="dashboard-homepage">
+	<div class="jumbotron">
+		<span class="number"><%= numberOfTransition  %></span><span>transition</span>
+		<br />
+		<span class="number"><%= numberOfUser  %></span><span>user</span>
+		<br /><br />
+		<a class="btn btn-primary btn-lg" href="/transition/new" role="button">Create new transition</a>
+		<a class="btn btn-primary btn-lg" href="/transition" role="button">List of transition</a>
+	</div>
+</div>
+<% include partials/footer %>

@@ -1,0 +1,67 @@
+<% include ../partials/header %> 
+<% currentTransition.forEach(function(transition){ %>
+    <form action="/transition/delete/<%= transition._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-danger btn-lg pull-right" type="submit">Delete</button>
+    </form>
+    <br />
+    <form action="/transition/editTransition" method="post">
+        <h1>Edit this transition</h1>
+        <h3><small><%= transition._id %></small></h3>
+        <br />
+        <div class="row form-transition">
+
+            <div class="col-md-6 form-transition-field" data-provide="datepicker">
+                <label for="description">Date</label>
+                <input type="text" class="form-control" id="datepicker" name="date" value="<%= transition.date %>"/>
+            </div>
+
+            <div class="col-md-6 form-transition-field">
+                <label for="category">Category</label>
+                <input class="form-control" type="text" name="category" id="category" value="<%= transition.category %>" />
+            </div>
+
+            <div class="col-md-6 form-transition-field">
+                <label for="location">Location</label>
+                <input class="form-control" type="text" name="location" id="location" value="<%= transition.position.location %>" />
+            </div>
+
+            <div class="col-md-6 form-transition-field">
+                <label for="amount">Amount</label>
+                <input class="form-control" type="number" name="amount" id="amount" value="<%= transition.amount %>" />
+            </div>
+
+            <input class="form-control" type="hidden" name="idTransition" id="idTransition" value="<%= transition._id %>" />
+
+            <div class="col-md-12 form-transition-field">
+                <label for="description">Description</label>
+                <input class="form-control" type="text" name="description" id="description" value="<%= transition.description %>" />
+            </div>
+
+            <div class="col-md-6 form-transition-field">
+                <div class="col-md-6 form-transition-field">
+                    <label for="positive-l">Positive</label><br />
+                    <label for="positive-si">YES</label>
+                    <input class="form-control form-transition-radio-field" type="radio" name="positive" id="positive-si" value="1" <% if(transition.positive){ %> checked <% } %> />
+                    <label for="positive-no">NO</label>
+                    <input class="form-control form-transition-radio-field" type="radio" name="positive" id="positive-no" value="0" <% if(!transition.positive){ %> checked <% } %> />
+                </div>
+                <div class="col-md-6 form-transition-field">
+                    <label for="track-l">Track</label><br />
+                    <label for="track-si">SI</label>
+                    <input class="form-control form-transition-radio-field" type="radio" name="track" id="track-si" value="1" <% if(transition.track){ %> checked <% } %>/>
+                    <label for="track-no">NO</label>
+                    <input class="form-control form-transition-radio-field" type="radio" name="track" id="track-no" value="0" <% if(!transition.track){ %> checked <% } %>/>
+                </div>
+            </div>
+            <div class="col-md-6 form-transition-field">
+                <input class="form-control btn-success" type="submit" name="invia" id="invia" value="Edit" />
+            </div>
+        </div>
+    </form>
+
+<script>
+    jQuery('#datepicker').datepicker();
+</script>
+
+<% }); %>
+<% include ../partials/footer %> 
